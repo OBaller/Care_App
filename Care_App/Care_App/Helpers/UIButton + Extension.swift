@@ -12,7 +12,7 @@ public extension UIButton {
     self.init(type: .custom)
     setTitle(text, for: .normal)
     titleLabel?.text = text
-//      titleLabel?.font = .BBG.paragraphSmall.font
+    titleLabel?.font = UIFont.systemFont(ofSize: 14)
     setTitleColor(textColor, for: .normal)
     setHeight(height: 40)
     backgroundColor = bgColor
@@ -23,4 +23,27 @@ public extension UIButton {
     buttton.layer.cornerRadius = 4
     return buttton
   }
+  
+  static func createDontHaveAccountButton() -> UIButton {
+    let button = UIButton(text: "", textColor: K.AppColors.primarybg, bgColor: nil)
+    button.setAttributedTitle(NSAttributedString.customAttributedRegularAndMediumUnderlined(
+      string1: "Don't have an account? Contact Support", inRange: "Contact Support"), for: .normal)
+    return button
+  }
+  
+  static func createButtonWithPrimaryText(_ text: String, textColor: UIColor) -> UIButton {
+    return UIButton(text: text, textColor: textColor, bgColor: nil)
+  }
+  
+  func disable() {
+    self.isEnabled = false
+    self.backgroundColor = K.AppColors.textSecondary
+    self.setTitleColor(.white.withAlphaComponent(0.6), for: .disabled)
+  }
+
+  func enable() {
+    self.isEnabled = true
+    self.backgroundColor = K.AppColors.primarybg
+  }
+  
 }

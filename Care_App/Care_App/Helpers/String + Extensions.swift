@@ -71,3 +71,15 @@ public extension String {
     return result
   }
 }
+
+public extension NSAttributedString {
+  class func customAttributedRegularAndMediumUnderlined(string1: String, inRange string2: String) -> NSAttributedString {
+    let underlineAttriString = NSMutableAttributedString(string: string1)
+    var font: UIFont = UIFont.systemFont(ofSize: 14)
+    let range1 = (string1 as NSString).range(of: string2)
+    underlineAttriString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range1)
+    underlineAttriString.addAttribute(NSAttributedString.Key.font, value: font, range: range1)
+    underlineAttriString.addAttribute(NSAttributedString.Key.foregroundColor, value: K.AppColors.primarybg!, range: range1)
+    return underlineAttriString
+  }
+}

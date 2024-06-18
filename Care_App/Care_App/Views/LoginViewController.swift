@@ -18,7 +18,8 @@ class LoginViewController: UIViewController {
       }
       return check
   }()
-  let forgotLabel = UILabel(text: "Forgot Password?", size: 16, textColor: K.AppColors.buttonred ?? UIColor(), alignment: .right, isBold: false)
+  
+  lazy var forgotButton = UIButton.createButtonWithPrimaryText("Forgot Password?", textColor: K.AppColors.buttonred ?? UIColor())
   
   public lazy var emailField: CAEmailField = {
     let textField = CAEmailField("Username")
@@ -37,37 +38,40 @@ class LoginViewController: UIViewController {
   }()
   
   lazy var loginButton = UIButton.createButtonWithPrimaryBackground(withText: "Sign in")
-
-  public lazy var dontHaveAccountView = FooterLabelPrimaryButtonTextView(labelText: "Don't have an account?", buttonTitle: "Contact Support", hasBoldButtonText: true) {
-    self.didTapSupport()
-  }
+  
+  lazy var dontHaveAccButton: UIButton = {
+    let button = UIButton.createDontHaveAccountButton()
+    button.addTarget(self, action: #selector(didTapSupport), for: .touchUpInside)
+    return button
+  }()
 
   
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
       setUpViews()
-  
+//      loginButton.disable()
     }
   
   private func setUpViews() {
     let headerStack = VerticalStackView(arrangedSubviews: [titleLabel, subtitleLabel], spacing: 8)
+    headerStack.alignment = .leading
     view.addSubview(headerStack)
     headerStack.newAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 180, paddingLeft: 20)
-    let forgotStack = HorizontalStack(arrangedSubviews: [checks, UIView(), forgotLabel])
+    let forgotStack = HorizontalStack(arrangedSubviews: [checks, UIView(), forgotButton])
     forgotStack.axis = .horizontal
     let overallStack = VerticalStackView(arrangedSubviews: [emailField, passwordField, forgotStack, loginButton], spacing: 25)
     view.addSubview(overallStack)
     overallStack.newAnchor(top: headerStack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 20)
-    let supportStack = VerticalStackView(arrangedSubviews: [dontHaveAccountView])
+    let supportStack = VerticalStackView(arrangedSubviews: [dontHaveAccButton])
     supportStack.alignment = .center
     view.addSubview(supportStack)
     supportStack.newAnchor(top: overallStack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 20, paddingRight: 20)
     loginButton.addTarget(self, action: #selector(handleLoginButtonTapped), for: .touchUpInside)
     
   }
-    
-    @objc 
+    // MARK: - Actions
+    @objc
     func handleLoginButtonTapped() {
         let tabBarController = TabBarController()
         tabBarController.modalPresentationStyle = .fullScreen

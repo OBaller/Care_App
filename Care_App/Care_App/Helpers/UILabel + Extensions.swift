@@ -12,7 +12,7 @@ public extension UILabel {
     self.init()
     font = isBold ? UIFont(name: "Roboto-Bold", size: 32) : UIFont(name: "Roboto-Bold", size: 16)
     self.text = text
-    textColor = K.AppColors.textPrimary
+    textColor = K.AppColors.brandGrey
     numberOfLines = 0
     textAlignment = .center
     adjustsFontSizeToFitWidth = true

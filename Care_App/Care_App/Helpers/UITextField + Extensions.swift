@@ -91,3 +91,31 @@ public extension UITextField {
     self.rightViewMode = .always
   }
 }
+
+extension UITableView {
+    static var removeTopMargin: UIEdgeInsets {
+        return .init(top: -20, left: -20, bottom: 0, right: 0)
+    }
+    
+    func register<T: UITableViewCell>(_ type: T.Type) where T: ReusableView {
+        register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    func dequeue<T: UITableViewCell>(_ type: T.Type, _ indexPath: IndexPath) -> T where T: ReusableView {
+        guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+            fatalError("Could not dequeue cell")
+        }
+        return cell
+    }
+}
+
+
+protocol ReusableView: AnyObject {
+    static var reuseIdentifier: String { get }
+}
+
+extension UITableViewCell: ReusableView {
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
