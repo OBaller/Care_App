@@ -33,7 +33,6 @@
 		C577F5A72C2065D70074C587 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5A62C2065D70074C587 /* VerticalStackView.swift */; };
 		C577F5A92C20663B0074C587 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5A82C20663B0074C587 /* UIView + Extensions.swift */; };
 		C577F5AB2C2068170074C587 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5AA2C2068170074C587 /* UILabel + Extensions.swift */; };
-		C577F5AE2C2073040074C587 /* CAEmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5AD2C2073040074C587 /* CAEmailField.swift */; };
 		C577F5B02C20735C0074C587 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5AF2C20735C0074C587 /* CustomTextField.swift */; };
 		C577F5B22C2073AB0074C587 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5B12C2073AB0074C587 /* UITextField + Extensions.swift */; };
 		C577F5B42C207B990074C587 /* UITapGesture + Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5B32C207B990074C587 /* UITapGesture + Util.swift */; };
@@ -45,6 +44,10 @@
 		C577F5C42C20D1240074C587 /* MedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5C32C20D1240074C587 /* MedsModel.swift */; };
 		C577F5C62C20D1620074C587 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5C52C20D1620074C587 /* HomeScreenViewModel.swift */; };
 		C577F5C92C20D5BB0074C587 /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5C82C20D5BB0074C587 /* MedicationTableViewCell.swift */; };
+		C577F5CC2C21C7B00074C587 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5CB2C21C7B00074C587 /* NetworkService.swift */; };
+		C577F5CE2C21C9450074C587 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5CD2C21C9450074C587 /* LoginRequest.swift */; };
+		C577F5D12C21EC850074C587 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D02C21EC850074C587 /* LoginResponse.swift */; };
+		C577F5D32C21F25F0074C587 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D22C21F25F0074C587 /* AlertHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,7 +79,6 @@
 		C577F5A62C2065D70074C587 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		C577F5A82C20663B0074C587 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		C577F5AA2C2068170074C587 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
-		C577F5AD2C2073040074C587 /* CAEmailField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAEmailField.swift; sourceTree = "<group>"; };
 		C577F5AF2C20735C0074C587 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C577F5B12C2073AB0074C587 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
 		C577F5B32C207B990074C587 /* UITapGesture + Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGesture + Util.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,10 @@
 		C577F5C32C20D1240074C587 /* MedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedsModel.swift; sourceTree = "<group>"; };
 		C577F5C52C20D1620074C587 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		C577F5C82C20D5BB0074C587 /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
+		C577F5CB2C21C7B00074C587 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C577F5CD2C21C9450074C587 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		C577F5D02C21EC850074C587 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		C577F5D22C21F25F0074C587 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,12 +126,14 @@
 		C577F5672C20347A0074C587 /* Care_App */ = {
 			isa = PBXGroup;
 			children = (
+				C577F5CF2C21EC720074C587 /* Response */,
+				C577F5CA2C21C7900074C587 /* NetworkManager */,
+				C577F5AC2C2072EC0074C587 /* Reusables */,
+				C577F5A52C2065C50074C587 /* Helpers */,
 				C577F5C72C20D5890074C587 /* Cell */,
 				C577F5872C2051F60074C587 /* Views */,
 				C577F5C22C20D1060074C587 /* ViewModel */,
 				C577F5C12C20D0F50074C587 /* Model */,
-				C577F5AC2C2072EC0074C587 /* Reusables */,
-				C577F5A52C2065C50074C587 /* Helpers */,
 				C577F58A2C205A9D0074C587 /* Roboto */,
 				C577F57C2C203F3E0074C587 /* Constants */,
 				C577F5682C20347A0074C587 /* AppDelegate.swift */,
@@ -188,6 +196,7 @@
 				C577F5B72C207EBC0074C587 /* String + Extensions.swift */,
 				C577F5BB2C2089380074C587 /* UIButton + Extension.swift */,
 				C577F5BF2C20C9B90074C587 /* UIImageView + Extensions.swift */,
+				C577F5D22C21F25F0074C587 /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -195,7 +204,6 @@
 		C577F5AC2C2072EC0074C587 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
-				C577F5AD2C2073040074C587 /* CAEmailField.swift */,
 				C577F5B52C207DD20074C587 /* CAPasswordField.swift */,
 				C577F5AF2C20735C0074C587 /* CustomTextField.swift */,
 				C577F5BD2C208FD50074C587 /* StaticCheckBoxWith Title.swift */,
@@ -207,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				C577F5C32C20D1240074C587 /* MedsModel.swift */,
+				C577F5CD2C21C9450074C587 /* LoginRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +234,22 @@
 				C577F5C82C20D5BB0074C587 /* MedicationTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C577F5CA2C21C7900074C587 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				C577F5CB2C21C7B00074C587 /* NetworkService.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		C577F5CF2C21EC720074C587 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C577F5D02C21EC850074C587 /* LoginResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C577F5D32C21F25F0074C587 /* AlertHelper.swift in Sources */,
 				C577F5B02C20735C0074C587 /* CustomTextField.swift in Sources */,
 				C577F5B82C207EBC0074C587 /* String + Extensions.swift in Sources */,
 				C577F5B22C2073AB0074C587 /* UITextField + Extensions.swift in Sources */,
@@ -320,15 +346,17 @@
 				C577F5BC2C2089380074C587 /* UIButton + Extension.swift in Sources */,
 				C577F5B42C207B990074C587 /* UITapGesture + Util.swift in Sources */,
 				C577F5842C2051CC0074C587 /* SearchViewController.swift in Sources */,
+				C577F5CC2C21C7B00074C587 /* NetworkService.swift in Sources */,
 				C577F5A72C2065D70074C587 /* VerticalStackView.swift in Sources */,
 				C577F5C62C20D1620074C587 /* HomeScreenViewModel.swift in Sources */,
 				C577F5892C2053EF0074C587 /* TabBarController.swift in Sources */,
+				C577F5D12C21EC850074C587 /* LoginResponse.swift in Sources */,
 				C577F56D2C20347A0074C587 /* HomeViewController.swift in Sources */,
 				C577F5862C2051E70074C587 /* AccountViewController.swift in Sources */,
 				C577F5692C20347A0074C587 /* AppDelegate.swift in Sources */,
 				C577F5B62C207DD20074C587 /* CAPasswordField.swift in Sources */,
+				C577F5CE2C21C9450074C587 /* LoginRequest.swift in Sources */,
 				C577F56B2C20347A0074C587 /* SceneDelegate.swift in Sources */,
-				C577F5AE2C2073040074C587 /* CAEmailField.swift in Sources */,
 				C577F5C92C20D5BB0074C587 /* MedicationTableViewCell.swift in Sources */,
 				C577F5822C2042EB0074C587 /* LoginViewController.swift in Sources */,
 				C577F57E2C203F670074C587 /* Constants.swift in Sources */,

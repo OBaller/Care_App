@@ -13,6 +13,7 @@ public class CustomTextfield: UITextField {
     super.init(frame: frame)
     delegate = self
     setHeight(height: 46)
+    layer.borderColor = K.AppColors.brandGrey?.cgColor
   }
 
   required init?(coder: NSCoder) {
@@ -48,10 +49,10 @@ public class CustomTextfield: UITextField {
 extension CustomTextfield: UITextFieldDelegate {
   public func textFieldDidBeginEditing(_ textField: UITextField) {
     textField.layer.borderWidth = 1
-    textField.layer.borderColor = K.AppColors.primarybg?.cgColor
+    textField.layer.borderColor = K.AppColors.brandGrey?.cgColor
   }
 
   public func textFieldDidEndEditing(_ textField: UITextField) {
-    textField.layer.borderWidth = 0
+    textField.layer.borderWidth = 1
   }
 }

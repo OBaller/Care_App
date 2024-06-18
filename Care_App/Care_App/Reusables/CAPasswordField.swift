@@ -48,7 +48,7 @@ public class CAPasswordField: CustomTextfield {
     guard let passwordText = self.text else { return }
     if passwordText.isValidPassword {
       errorLabel.hide()
-      borderColor = K.AppColors.primarybg
+      borderColor = K.AppColors.brandGrey
       backgroundColor = .white
     } else {
       errorLabel.show()

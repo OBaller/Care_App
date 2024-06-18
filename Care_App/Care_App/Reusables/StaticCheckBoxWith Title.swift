@@ -37,7 +37,7 @@ class StaticCheckboxWithTitle: UIView {
         checkBox.setDimensions(height: 24, width: 24)
         
         addSubview(hStack)
-        hStack.newAnchor(left: leftAnchor, paddingLeft: 20)
+        hStack.newAnchor(left: leftAnchor)
         hStack.centerYInSuperview()
     }
     
