@@ -22,7 +22,7 @@ public enum Constants {
   public enum AppColors {
     static let primarybg =  UIColor(named: "primarybg")
     static let buttonYellow = UIColor(named: "button_yellow")
-    static let buttonred = UIColor(named: "button_red")
+    static let buttonRed = UIColor(named: "button_red")
     static let brandGrey = UIColor(named: "brand_grey")
     static let textPrimary = UIColor(named: "text_primary")
     static let textSecondary = UIColor(named: "text_secondary")

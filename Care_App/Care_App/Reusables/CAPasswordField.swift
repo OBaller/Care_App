@@ -10,7 +10,7 @@ import UIKit
 public class CAPasswordField: CustomTextfield {
   let eyeBtn = UIButton(type: .custom)
 
-  let errorLabel = UILabel(text: "Constants.LoginVCStrings.errorMessage", size: 14, textColor: K.AppColors.buttonred ?? UIColor(), alignment: .left, isBold: false)
+  let errorLabel = UILabel(text: "Constants.LoginVCStrings.errorMessage", size: 14, textColor: K.AppColors.buttonRed ?? UIColor(), alignment: .left, isBold: false)
   
   func addErrorLabel() {
     addSubview(errorLabel)
@@ -53,7 +53,7 @@ public class CAPasswordField: CustomTextfield {
     } else {
       errorLabel.show()
       borderWidth = 1
-      borderColor = K.AppColors.buttonred
+      borderColor = K.AppColors.buttonRed
     }
     errorLabel.isHidden = passwordText.isEmpty
   }

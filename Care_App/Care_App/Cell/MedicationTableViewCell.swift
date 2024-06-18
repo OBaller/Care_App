@@ -9,17 +9,17 @@ import UIKit
 
 class MedicationTableViewCell: UITableViewCell {
   var containerView: UIStackView!
-  let descriptionLabel = UILabel(text: "", size: 16, isBold: false)
-  let nameLabel = UILabel(text: "", size: 16, isBold: false)
-  let roomLabel = UILabel(text: "", size: 16, isBold: false)
-  let bedLabel = UILabel(text: "", size: 16, isBold: false)
-  let timeLabel = UILabel(text: "", size: 16, isBold: false)
+  let descriptionLabel = UILabel(text: "", size: 16, alignment: .left, isBold: false)
+  let nameLabel = UILabel(text: "", size: 16, alignment: .left, isBold: false)
+  let roomLabel = UILabel(text: "", size: 16, alignment: .left, isBold: false)
+  let bedLabel = UILabel(text: "", size: 16, alignment: .left, isBold: false)
+  let timeLabel = UILabel(text: "", size: 16, alignment: .left, isBold: false)
   
-  var descIcon = UIImageView(named: "bell_icon")
-  var nameIcon = UIImageView(named: "bell_icon")
-  var roomIcon = UIImageView(named: "bell_icon")
-  var bedIcon = UIImageView(named: "bell_icon")
-  var clockIcon = UIImageView(named: "bell_icon")
+  var descIcon = UIImageView(named: "arrow_icon")
+  var nameIcon = UIImageView(named: "user_icon")
+  var roomIcon = UIImageView(named: "door_icon")
+  var bedIcon = UIImageView(named: "bed_icon")
+  var clockIcon = UIImageView(named: "clock_icon")
 
 
 
@@ -33,7 +33,7 @@ class MedicationTableViewCell: UITableViewCell {
   }
   
   private func setupView() {
-    descIcon.setDimensions(height: 20, width: 20)
+    descIcon.setDimensions(height: 25, width: 25)
     nameIcon.setDimensions(height: 20, width: 20)
     roomIcon.setDimensions(height: 20, width: 20)
     bedIcon.setDimensions(height: 20, width: 20)
@@ -43,11 +43,11 @@ class MedicationTableViewCell: UITableViewCell {
     containerView.clipsToBounds = true
     containerView.cornerRadius = 7
     containerView.isLayoutMarginsRelativeArrangement = true
-    containerView.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-    containerView.alignment = .center
+    containerView.layoutMargins = .init(top: 10, left: 10, bottom: 12, right: 10)
     containerView.backgroundColor = K.AppColors.cellBg
-    
-    let contentStack = VerticalStackView(arrangedSubviews: [containerView, UIView(height: 15, bgColor: .white, cornerRadius: nil)], spacing: 0)
+    containerView.axis = .vertical
+    containerView.setHeight(height: 100)
+    let contentStack = VerticalStackView(arrangedSubviews: [containerView, UIView(height: 16, bgColor: .white, cornerRadius: nil)], spacing: 0)
     contentView.addSubview(contentStack)
     contentStack.fillSuperview()
     
@@ -55,6 +55,7 @@ class MedicationTableViewCell: UITableViewCell {
     let middleStack = HorizontalStack(arrangedSubviews: [nameIcon, nameLabel])
     let bottmStack = HorizontalStack(arrangedSubviews: [roomIcon, roomLabel, bedIcon, bedLabel, clockIcon, timeLabel])
     containerView.addArrangedSubviews([topStack, middleStack, bottmStack])
+    containerView.setCustomSpacing(6, after: middleStack)
   }
   
   func configure(with model: MedsModel) {

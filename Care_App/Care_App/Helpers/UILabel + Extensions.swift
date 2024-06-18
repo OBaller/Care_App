@@ -28,6 +28,17 @@ public extension UILabel {
     self.textColor = textColor
   }
   
+  convenience init(text: String, size: CGFloat, alignment: NSTextAlignment, isBold: Bool) {
+    self.init()
+    font = isBold ? UIFont(name: "Roboto-Medium", size: 32) : UIFont(name: "Roboto-Medium", size: 16)
+    self.text = text
+    numberOfLines = 0
+    textAlignment = alignment
+    textColor = K.AppColors.brandGrey
+    adjustsFontSizeToFitWidth = true
+    self.textColor = textColor
+  }
+  
 }
 
 extension UILabel {

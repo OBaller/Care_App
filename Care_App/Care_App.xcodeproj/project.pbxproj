@@ -48,6 +48,7 @@
 		C577F5CE2C21C9450074C587 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5CD2C21C9450074C587 /* LoginRequest.swift */; };
 		C577F5D12C21EC850074C587 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D02C21EC850074C587 /* LoginResponse.swift */; };
 		C577F5D32C21F25F0074C587 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D22C21F25F0074C587 /* AlertHelper.swift */; };
+		C577F5D52C21FC050074C587 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D42C21FC050074C587 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		C577F5CD2C21C9450074C587 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		C577F5D02C21EC850074C587 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C577F5D22C21F25F0074C587 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		C577F5D42C21FC050074C587 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				C577F5C52C20D1620074C587 /* HomeScreenViewModel.swift */,
+				C577F5D42C21FC050074C587 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				C577F5C02C20C9B90074C587 /* UIImageView + Extensions.swift in Sources */,
 				C577F5A92C20663B0074C587 /* UIView + Extensions.swift in Sources */,
 				C577F5AB2C2068170074C587 /* UILabel + Extensions.swift in Sources */,
+				C577F5D52C21FC050074C587 /* LoginViewModel.swift in Sources */,
 				C577F5BC2C2089380074C587 /* UIButton + Extension.swift in Sources */,
 				C577F5B42C207B990074C587 /* UITapGesture + Util.swift in Sources */,
 				C577F5842C2051CC0074C587 /* SearchViewController.swift in Sources */,

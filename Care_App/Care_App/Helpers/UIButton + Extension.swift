@@ -12,7 +12,7 @@ public extension UIButton {
     self.init(type: .custom)
     setTitle(text, for: .normal)
     titleLabel?.text = text
-    titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    titleLabel?.font = UIFont(name: "Roboto-Regular", size: 14)
     setTitleColor(textColor, for: .normal)
     setHeight(height: 40)
     backgroundColor = bgColor
