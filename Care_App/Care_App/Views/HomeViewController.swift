@@ -8,6 +8,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
   let viewModel = HomeScreenViewModel()
+  let activityIndicator = UIActivityIndicatorView(style: .large)
   let titleLabel = UILabel(text: "Hi, George!", size: 18, isBold: false)
   let subtitleLabel = UILabel(text: "Clock-in to begin your task", size: 16, textColor: K.AppColors.brandGrey ?? UIColor(), alignment: .left, isBold: false)
   
@@ -128,15 +129,18 @@ class HomeViewController: UIViewController {
   }
   
   private func fetchTasks() {
+    activityIndicator.startAnimating()
     NetworkManager.shared.fetchTasks(shortCode: "FKRC", careHomeId: "2") { [weak self] result in
       switch result {
         case .success(let message):
           DispatchQueue.main.async {
+            self?.activityIndicator.stopAnimating()
             print(message)
             self?.tableView.reloadData()
           }
         case .failure(let error):
           DispatchQueue.main.async {
+            self?.activityIndicator.stopAnimating()
             print("Failed to fetch tasks: \(error)")
           }
       }

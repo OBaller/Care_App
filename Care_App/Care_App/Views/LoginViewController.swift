@@ -53,7 +53,10 @@ class LoginViewController: UIViewController {
     return button
   }()
   
+  let footerLabel = UILabel()
+
   let viewModel = LoginViewModel()
+  let activityIndicator = UIActivityIndicatorView(style: .large)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -64,12 +67,14 @@ class LoginViewController: UIViewController {
     passwordField.addTarget(self, action: #selector(textFieldsDidChange), for: .editingChanged)
     
     viewModel.onLoginSuccess = { [weak self] in
+      self?.activityIndicator.stopAnimating()
       let tabBarController = TabBarController()
       tabBarController.modalPresentationStyle = .fullScreen
       self?.present(tabBarController, animated: true, completion: nil)
     }
     
     viewModel.onLoginFailure = { [weak self] errorMessage in
+      self?.activityIndicator.stopAnimating()
       AlertHelper.popUpAlert(title: "Login Failed", message: errorMessage, self: self ?? UIViewController())
     }
   }
@@ -79,18 +84,54 @@ class LoginViewController: UIViewController {
     headerStack.alignment = .leading
     view.addSubview(headerStack)
     headerStack.newAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 180, paddingLeft: 20)
+    
     let forgotStack = HorizontalStack(arrangedSubviews: [checks, UIView(), forgotButton])
     forgotStack.axis = .horizontal
+    
     let overallStack = VerticalStackView(arrangedSubviews: [userNameField, passwordField, errorLabel, forgotStack, loginButton], spacing: 25)
     overallStack.setCustomSpacing(8, after: passwordField)
     view.addSubview(overallStack)
     overallStack.newAnchor(top: headerStack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 20, paddingRight: 20)
+    
     let supportStack = VerticalStackView(arrangedSubviews: [dontHaveAccButton])
     supportStack.alignment = .center
     view.addSubview(supportStack)
     supportStack.newAnchor(top: overallStack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 25, paddingLeft: 20, paddingRight: 20)
+    
+    view.addSubview(activityIndicator)
+    activityIndicator.center = view.center
+    
+    view.addSubview(footerLabel)
+    footerLabel.newAnchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 20, paddingBottom: 10, paddingRight: 20)
+    
     loginButton.addTarget(self, action: #selector(handleLoginButtonTapped), for: .touchUpInside)
+    setUpFooterLabel()
   }
+  
+  private func setUpFooterLabel() {
+    footerLabel.numberOfLines = 0
+    footerLabel.textAlignment = .center
+    let termsString = "Terms & Conditions"
+    let privacyString = "Privacy Policy"
+    let fullString = "By clicking 'Sign in' above you agree to Arocare’s \(termsString) and \(privacyString)."
+    
+    let attributedString = NSMutableAttributedString(string: fullString)
+    let termsRange = (fullString as NSString).range(of: termsString)
+    let privacyRange = (fullString as NSString).range(of: privacyString)
+    let tint = K.AppColors.primarybg
+    attributedString.addAttribute(.foregroundColor, value: tint as Any, range: termsRange)
+    attributedString.addAttribute(.foregroundColor, value: tint as Any, range: privacyRange)
+    attributedString.addAttribute(.link, value: "terms://", range: termsRange)
+    attributedString.addAttribute(.link, value: "privacy://", range: privacyRange)
+    
+    footerLabel.attributedText = attributedString
+    footerLabel.isUserInteractionEnabled = true
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(_:)))
+    footerLabel.addGestureRecognizer(tapGesture)
+    footerLabel.font = UIFont(name: "Roboto-Regular", size: 13)
+    footerLabel.textColor = K.AppColors.brandGrey
+  }
+  
   
   // MARK: - Actions
   @objc
@@ -99,6 +140,7 @@ class LoginViewController: UIViewController {
           let password = passwordField.text, !password.isEmpty else {
       return
     }
+    activityIndicator.startAnimating()
     viewModel.login(userName: userName, password: password)
   }
   
@@ -117,6 +159,44 @@ class LoginViewController: UIViewController {
     } else {
       loginButton.disable()
     }
+  }
+  
+  @objc
+  func handleTapOnLabel(_ gesture: UITapGestureRecognizer) {
+    guard let label = gesture.view as? UILabel else { return }
+    
+    let termsString = "Terms & Conditions"
+    let privacyString = "Privacy Policy"
+    let fullString = label.text ?? ""
+    
+    let termsRange = (fullString as NSString).range(of: termsString)
+    let privacyRange = (fullString as NSString).range(of: privacyString)
+    
+    let tapLocation = gesture.location(in: label)
+    let tapIndex = indexOfAttributedTextCharacterAtPoint(point: tapLocation, label: label)
+    
+    if NSLocationInRange(tapIndex, termsRange) {
+      print("Terms & Conditions tapped")
+    } else if NSLocationInRange(tapIndex, privacyRange) {
+      print("Privacy Policy tapped")
+    }
+  }
+  
+  func indexOfAttributedTextCharacterAtPoint(point: CGPoint, label: UILabel) -> Int {
+    guard let attributedText = label.attributedText else { return NSNotFound }
+    
+    let textStorage = NSTextStorage(attributedString: attributedText)
+    let layoutManager = NSLayoutManager()
+    textStorage.addLayoutManager(layoutManager)
+    
+    let textContainer = NSTextContainer(size: label.bounds.size)
+    textContainer.lineFragmentPadding = 0.0
+    textContainer.maximumNumberOfLines = label.numberOfLines
+    textContainer.lineBreakMode = label.lineBreakMode
+    layoutManager.addTextContainer(textContainer)
+    
+    let glyphIndex = layoutManager.glyphIndex(for: point, in: textContainer)
+    return layoutManager.characterIndexForGlyph(at: glyphIndex)
   }
 }
 
