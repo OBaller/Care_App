@@ -8,6 +8,7 @@
 import Foundation
 
 public struct HomeScreenViewModel {
+  
   let medications: [MedsModel] = [
     .init(description: "11 Medications to take", name: "James", room: "RM 3A", bed: "Bed 5", time: "noon"),
     .init(description: "5 Medications to take", name: "Sandy", room: "RM 3A", bed: "Bed 45", time: "Afternoon"),

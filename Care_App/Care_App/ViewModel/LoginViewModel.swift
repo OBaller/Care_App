@@ -14,13 +14,14 @@ class LoginViewModel {
   func login(userName: String, password: String) {
     NetworkManager.shared.login(userName: userName, password: password) { [weak self] result in
       switch result {
-        case .success(let token):
-          UserDefaults.standard.set(token, forKey: "authToken")
+        case .success(let response):
+          let name = response.givenName
+          UserDefaults.standard.set(name, forKey: "userName")
           DispatchQueue.main.async {
             self?.onLoginSuccess?()
           }
         case .failure(let error):
-          let errorMessage = error.localizedDescription
+          let errorMessage = (error as NSError).userInfo[NSLocalizedDescriptionKey] as? String ?? error.localizedDescription
           DispatchQueue.main.async {
             self?.onLoginFailure?(errorMessage)
           }

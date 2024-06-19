@@ -49,6 +49,11 @@
 		C577F5D12C21EC850074C587 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D02C21EC850074C587 /* LoginResponse.swift */; };
 		C577F5D32C21F25F0074C587 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D22C21F25F0074C587 /* AlertHelper.swift */; };
 		C577F5D52C21FC050074C587 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D42C21FC050074C587 /* LoginViewModel.swift */; };
+		C577F5D72C22DF5C0074C587 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D62C22DF5B0074C587 /* BaseResponse.swift */; };
+		C577F5D92C2321110074C587 /* JSONDecoder + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5D82C2321110074C587 /* JSONDecoder + Extensions.swift */; };
+		C577F5DC2C2325AF0074C587 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5DB2C2325AF0074C587 /* APIError.swift */; };
+		C577F5DF2C23295B0074C587 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C577F5DE2C23295B0074C587 /* KeychainAccess */; };
+		C577F5E12C2329BD0074C587 /* Keychain + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577F5E02C2329BD0074C587 /* Keychain + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +101,10 @@
 		C577F5D02C21EC850074C587 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C577F5D22C21F25F0074C587 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		C577F5D42C21FC050074C587 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C577F5D62C22DF5B0074C587 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		C577F5D82C2321110074C587 /* JSONDecoder + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder + Extensions.swift"; sourceTree = "<group>"; };
+		C577F5DB2C2325AF0074C587 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		C577F5E02C2329BD0074C587 /* Keychain + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keychain + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C577F5DF2C23295B0074C587 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +138,7 @@
 		C577F5672C20347A0074C587 /* Care_App */ = {
 			isa = PBXGroup;
 			children = (
+				C577F5DA2C23259D0074C587 /* APIError */,
 				C577F5CF2C21EC720074C587 /* Response */,
 				C577F5CA2C21C7900074C587 /* NetworkManager */,
 				C577F5AC2C2072EC0074C587 /* Reusables */,
@@ -191,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				C577F5A62C2065D70074C587 /* VerticalStackView.swift */,
+				C577F5E02C2329BD0074C587 /* Keychain + Extension.swift */,
 				C577F5A82C20663B0074C587 /* UIView + Extensions.swift */,
 				C577F5AA2C2068170074C587 /* UILabel + Extensions.swift */,
 				C577F5B12C2073AB0074C587 /* UITextField + Extensions.swift */,
@@ -199,6 +211,7 @@
 				C577F5BB2C2089380074C587 /* UIButton + Extension.swift */,
 				C577F5BF2C20C9B90074C587 /* UIImageView + Extensions.swift */,
 				C577F5D22C21F25F0074C587 /* AlertHelper.swift */,
+				C577F5D82C2321110074C587 /* JSONDecoder + Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,8 +264,17 @@
 			isa = PBXGroup;
 			children = (
 				C577F5D02C21EC850074C587 /* LoginResponse.swift */,
+				C577F5D62C22DF5B0074C587 /* BaseResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		C577F5DA2C23259D0074C587 /* APIError */ = {
+			isa = PBXGroup;
+			children = (
+				C577F5DB2C2325AF0074C587 /* APIError.swift */,
+			);
+			path = APIError;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +293,9 @@
 			dependencies = (
 			);
 			name = Care_App;
+			packageProductDependencies = (
+				C577F5DE2C23295B0074C587 /* KeychainAccess */,
+			);
 			productName = Care_App;
 			productReference = C577F5652C20347A0074C587 /* Care_App.app */;
 			productType = "com.apple.product-type.application";
@@ -299,6 +324,9 @@
 				Base,
 			);
 			mainGroup = C577F55C2C20347A0074C587;
+			packageReferences = (
+				C577F5DD2C23295B0074C587 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = C577F5662C20347A0074C587 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,6 +370,7 @@
 				C577F5B02C20735C0074C587 /* CustomTextField.swift in Sources */,
 				C577F5B82C207EBC0074C587 /* String + Extensions.swift in Sources */,
 				C577F5B22C2073AB0074C587 /* UITextField + Extensions.swift in Sources */,
+				C577F5E12C2329BD0074C587 /* Keychain + Extension.swift in Sources */,
 				C577F5BE2C208FD50074C587 /* StaticCheckBoxWith Title.swift in Sources */,
 				C577F5C02C20C9B90074C587 /* UIImageView + Extensions.swift in Sources */,
 				C577F5A92C20663B0074C587 /* UIView + Extensions.swift in Sources */,
@@ -349,6 +378,7 @@
 				C577F5D52C21FC050074C587 /* LoginViewModel.swift in Sources */,
 				C577F5BC2C2089380074C587 /* UIButton + Extension.swift in Sources */,
 				C577F5B42C207B990074C587 /* UITapGesture + Util.swift in Sources */,
+				C577F5D72C22DF5C0074C587 /* BaseResponse.swift in Sources */,
 				C577F5842C2051CC0074C587 /* SearchViewController.swift in Sources */,
 				C577F5CC2C21C7B00074C587 /* NetworkService.swift in Sources */,
 				C577F5A72C2065D70074C587 /* VerticalStackView.swift in Sources */,
@@ -359,6 +389,8 @@
 				C577F5862C2051E70074C587 /* AccountViewController.swift in Sources */,
 				C577F5692C20347A0074C587 /* AppDelegate.swift in Sources */,
 				C577F5B62C207DD20074C587 /* CAPasswordField.swift in Sources */,
+				C577F5D92C2321110074C587 /* JSONDecoder + Extensions.swift in Sources */,
+				C577F5DC2C2325AF0074C587 /* APIError.swift in Sources */,
 				C577F5CE2C21C9450074C587 /* LoginRequest.swift in Sources */,
 				C577F56B2C20347A0074C587 /* SceneDelegate.swift in Sources */,
 				C577F5C92C20D5BB0074C587 /* MedicationTableViewCell.swift in Sources */,
@@ -508,6 +540,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZPS3H473KB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Care_App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -534,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZPS3H473KB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Care_App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -575,6 +609,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C577F5DD2C23295B0074C587 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C577F5DE2C23295B0074C587 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C577F5DD2C23295B0074C587 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C577F55D2C20347A0074C587 /* Project object */;
 }

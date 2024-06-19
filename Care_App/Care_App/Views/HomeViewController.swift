@@ -60,9 +60,14 @@ class HomeViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(MedicationTableViewCell.self)
-    
+    if let savedName = UserDefaults.standard.string(forKey: "userName") {
+      titleLabel.text = "Hi, \(savedName)!"
+    } else {
+      titleLabel.text = "Hi!"
+    }
     setupViews()
     updateToggleState()
+    fetchTasks()
   }
   
   private func setupViews() {
@@ -119,6 +124,22 @@ class HomeViewController: UIViewController {
       activitiesButton.setTitleColor(selectedColor, for: .normal)
       lineView1.backgroundColor = unselectedColor
       lineView2.backgroundColor = selectedColor
+    }
+  }
+  
+  private func fetchTasks() {
+    NetworkManager.shared.fetchTasks(shortCode: "FKRC", careHomeId: "2") { [weak self] result in
+      switch result {
+        case .success(let message):
+          DispatchQueue.main.async {
+            print(message)
+            self?.tableView.reloadData()
+          }
+        case .failure(let error):
+          DispatchQueue.main.async {
+            print("Failed to fetch tasks: \(error)")
+          }
+      }
     }
   }
   
